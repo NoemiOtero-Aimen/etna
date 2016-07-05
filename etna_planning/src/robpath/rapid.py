@@ -47,7 +47,11 @@ class ABB_Robot():
         RAPID_TEMPLATE += '    WaitDI DI_RF_LaserBeamReady,1;\n'
         RAPID_TEMPLATE += '    WaitDI DI_RF_GeneralFault,0;\n'
         RAPID_TEMPLATE += '\n'
+<<<<<<< HEAD
         RAPID_TEMPLATE += '    SetGO GO_Program_Rf, 0;\n' # set the program for control of laser power - prog 5    
+=======
+        RAPID_TEMPLATE += '    SetGO GO_Program_Rf, 0;\n' # set the program for control of laser power - prog 5
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
         RAPID_TEMPLATE += '    WaitTime 1;\n'
         RAPID_TEMPLATE += '    !SetGO GoLDL_Pwr3, %(power)i;\n' # set the laser power - 2200 W
         RAPID_TEMPLATE += '\n'
@@ -131,7 +135,10 @@ class ABB_Robot():
             print 'File transfered to the robot.'
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
 if __name__ == '__main__':
     rob = ABB_Robot()
     path = [([0, 0, 0], [0, 0, 0, 1], False),

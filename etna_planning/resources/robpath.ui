@@ -6,8 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
+<<<<<<< HEAD
     <width>924</width>
     <height>775</height>
+=======
+    <width>1200</width>
+    <height>800</height>
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
    </rect>
   </property>
   <property name="sizePolicy">
@@ -36,11 +41,19 @@
    </font>
   </property>
   <property name="windowTitle">
+<<<<<<< HEAD
    <string>LMD</string>
   </property>
   <property name="windowIcon">
    <iconset>
     <normaloff>logo.jpg</normaloff>logo.jpg</iconset>
+=======
+   <string>LMD Planning</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>e.png</normaloff>e.png</iconset>
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -83,6 +96,7 @@
       <property name="fieldGrowthPolicy">
        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
       </property>
+<<<<<<< HEAD
       <property name="leftMargin">
        <number>6</number>
       </property>
@@ -93,6 +107,9 @@
        <number>6</number>
       </property>
       <property name="bottomMargin">
+=======
+      <property name="margin">
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
        <number>6</number>
       </property>
       <item row="0" column="1">
@@ -257,6 +274,7 @@
       <property name="fieldGrowthPolicy">
        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
       </property>
+<<<<<<< HEAD
       <property name="leftMargin">
        <number>6</number>
       </property>
@@ -267,6 +285,9 @@
        <number>6</number>
       </property>
       <property name="bottomMargin">
+=======
+      <property name="margin">
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
        <number>6</number>
       </property>
       <item row="0" column="0">
@@ -410,13 +431,21 @@
       </property>
       <property name="minimumSize">
        <size>
+<<<<<<< HEAD
         <width>200</width>
+=======
+        <width>240</width>
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
         <height>30</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
+<<<<<<< HEAD
         <width>200</width>
+=======
+        <width>240</width>
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
         <height>16777215</height>
        </size>
       </property>
@@ -450,13 +479,21 @@
       </property>
       <property name="minimumSize">
        <size>
+<<<<<<< HEAD
         <width>200</width>
+=======
+        <width>240</width>
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
         <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
+<<<<<<< HEAD
         <width>200</width>
+=======
+        <width>240</width>
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
         <height>16777215</height>
        </size>
       </property>
@@ -474,6 +511,7 @@
     </item>
     <item row="16" column="1" rowspan="4">
      <layout class="QFormLayout" name="flLaser">
+<<<<<<< HEAD
       <property name="leftMargin">
        <number>6</number>
       </property>
@@ -484,6 +522,9 @@
        <number>6</number>
       </property>
       <property name="bottomMargin">
+=======
+      <property name="margin">
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
        <number>6</number>
       </property>
       <item row="0" column="0">
@@ -884,6 +925,7 @@ border: 1px solid gray;</string>
       </layout>
      </widget>
     </item>
+<<<<<<< HEAD
     <item row="1" column="1">
      <widget class="QLabel" name="lblLogo">
       <property name="minimumSize">
@@ -903,6 +945,8 @@ border: 1px solid gray;</string>
       </property>
      </widget>
     </item>
+=======
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
     <item row="23" column="1" rowspan="2">
      <widget class="Line" name="line_6">
       <property name="orientation">
@@ -915,6 +959,21 @@ border: 1px solid gray;</string>
       <property name="enabled">
        <bool>true</bool>
       </property>
+<<<<<<< HEAD
+=======
+      <property name="minimumSize">
+       <size>
+        <width>240</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>240</width>
+        <height>16777215</height>
+       </size>
+      </property>
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
       <property name="font">
        <font>
         <weight>50</weight>
@@ -933,13 +992,21 @@ border: 1px solid gray;</string>
       </property>
       <property name="minimumSize">
        <size>
+<<<<<<< HEAD
         <width>200</width>
+=======
+        <width>240</width>
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
         <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
+<<<<<<< HEAD
         <width>200</width>
+=======
+        <width>240</width>
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
         <height>16777215</height>
        </size>
       </property>
@@ -958,13 +1025,21 @@ border: 1px solid gray;</string>
      <widget class="QPushButton" name="btnLoadMesh">
       <property name="minimumSize">
        <size>
+<<<<<<< HEAD
         <width>200</width>
+=======
+        <width>240</width>
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
         <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
+<<<<<<< HEAD
         <width>200</width>
+=======
+        <width>240</width>
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
         <height>16777215</height>
        </size>
       </property>
@@ -979,6 +1054,31 @@ border: 1px solid gray;</string>
       </property>
      </widget>
     </item>
+<<<<<<< HEAD
+=======
+    <item row="2" column="1" rowspan="4">
+     <widget class="QLabel" name="lblLogo">
+      <property name="minimumSize">
+       <size>
+        <width>120</width>
+        <height>120</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>e.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
    </layout>
   </widget>
  </widget>

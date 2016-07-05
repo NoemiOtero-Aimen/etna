@@ -1,5 +1,8 @@
 #!/usr/bin/env python
+<<<<<<< HEAD
 
+=======
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
 import os
 os.environ['QT_API'] = 'pyqt'
 os.environ['ETS_TOOLKIT'] = 'qt4'
@@ -19,7 +22,11 @@ from PyQt4 import uic
 
 import numpy as np
 
+<<<<<<< HEAD
 from robpath.robpath import RobPath
+=======
+from robpath import RobPath
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
 from robpath.mlabplot import MPlot3D
 
 
@@ -107,6 +114,10 @@ class RobPathUI(QtGui.QMainWindow):
         self.timer.timeout.connect(self.updateProcess)
 
         self.robpath = RobPath()
+<<<<<<< HEAD
+=======
+        self.filled = True
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
 
     def changePosition(self):
         x = self.sbPositionX.value()
@@ -136,7 +147,12 @@ class RobPathUI(QtGui.QMainWindow):
 
     def updateProcess(self):
         if self.robpath.k < len(self.robpath.levels):
+<<<<<<< HEAD
             self.robpath.update_process()
+=======
+            self.robpath.update_process(
+                filled=self.filled, contour=not self.filled)
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
             #self.plot.drawSlice(self.robpath.slices, self.robpath.path)
             self.plot.drawPath(self.robpath.path)
             self.plot.progress.setValue(100.0 * self.robpath.k / len(self.robpath.levels))
@@ -157,9 +173,14 @@ class RobPathUI(QtGui.QMainWindow):
     def btnLoadMeshClicked(self):
         self.blockSignals(True)
         try:
+<<<<<<< HEAD
             filename = QtGui.QFileDialog.getOpenFileName(self.plot,
                                                          'Open file', './',
                                                          'Mesh Files (*.stl)')
+=======
+            filename = QtGui.QFileDialog.getOpenFileName(
+                self.plot, 'Open file', './', 'Mesh Files (*.stl)')
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
             print filename
             self.setWindowTitle('Mesh Viewer: %s' % filename)
             self.robpath.load_mesh(filename)
@@ -173,8 +194,11 @@ class RobPathUI(QtGui.QMainWindow):
             self.btnProcessMesh.setEnabled(True)
             self.btnProcessContours.setEnabled(True)
         except:
+<<<<<<< HEAD
             #self.btnProcessMesh.setEnabled(False)
             #self.btnProcessContours.setEnabled(False)
+=======
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
             pass
         self.blockSignals(False)
         self.plot.drawMesh(self.robpath.mesh)
@@ -209,6 +233,7 @@ class RobPathUI(QtGui.QMainWindow):
             self.timer.start(100)
 
     def btnProcessMeshClicked(self):
+<<<<<<< HEAD
         self.robpath.filled = True
         self.__process_shape()
 
@@ -221,6 +246,14 @@ class RobPathUI(QtGui.QMainWindow):
         # self.robpath.get_contours_path()
         # self.plot.drawPath(self.robpath.path)
         # self.btnSaveRapid.setEnabled(True)
+=======
+        self.filled = True
+        self.__process_shape()
+
+    def btnProcessContoursClicked(self):
+        self.filled = False
+        self.__process_shape()
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
 
     def btnSaveRapidClicked(self):
         self.robpath.save_rapid()

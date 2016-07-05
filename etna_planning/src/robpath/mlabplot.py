@@ -24,6 +24,15 @@ class MPlot3D():
 
     #TODO: Add function to draw volume of work
 
+<<<<<<< HEAD
+=======
+    def draw_arrow(self, arrow, color=RED, scale=10):
+        pnt, vec = arrow
+        # scale = self.scale * scale
+        mlab.quiver3d(pnt[0], pnt[1], pnt[2], vec[0], vec[1], vec[2],
+                      color=color, mode='arrow', scale_factor=self.scale)
+
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
     def draw_frame(self, pose, scale=10, label=''):
         R, t = pose
         scale = self.scale * scale
@@ -179,23 +188,38 @@ class MPlot3D():
 
     def draw_path(self, path):
         points, vectors, processes = [], [], []
+<<<<<<< HEAD
         for k in range(1, len(path)):
             points.append(path[k][0])
             vectors.append(path[k-1][0] - path[k][0])
+=======
+        for k in range(len(path)-1):
+            points.append(path[k][0])
+            vectors.append(path[k+1][0] - path[k][0])
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
             processes.append(path[k][2])
         points, vectors = np.array(points), np.array(vectors)
         processes = np.array(processes)
         pnts, vctrs = points[processes], vectors[processes]
         mlab.quiver3d(pnts[:, 0], pnts[:, 1], pnts[:, 2],
                       vctrs[:, 0], vctrs[:, 1], vctrs[:, 2],
+<<<<<<< HEAD
                       color=(0.3, 0.5, 0.7), mode='2ddash',
                       scale_factor=1, line_width=5.0)
                       #mode='2ddash', 'arrow', 'cylinder'
+=======
+                      color=(0.7, 0.5, 0.3), mode='2ddash',
+                      scale_factor=1, line_width=5.0)
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
         pnts = points[np.bitwise_not(processes)]
         vctrs = vectors[np.bitwise_not(processes)]
         mlab.quiver3d(pnts[:, 0], pnts[:, 1], pnts[:, 2],
                       vctrs[:, 0], vctrs[:, 1], vctrs[:, 2],
+<<<<<<< HEAD
                       color=(0.8, 0.6, 0.2), mode='2ddash',
+=======
+                      color=(0.2, 0.4, 0.6), mode='2ddash',
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
                       scale_factor=1, line_width=2.0)
 
     def draw_point_cloud(self, points3d):
@@ -232,6 +256,7 @@ if __name__ == '__main__':
                         [0, 0, 1]])
     point = np.float32([0, 0, 0])
 
+<<<<<<< HEAD
     mplot3d = MPlot3D(scale=2)
     mplot3d.draw_working_area(200, 100)
     mplot3d.draw_frame((frame, point), label='frame')
@@ -240,4 +265,34 @@ if __name__ == '__main__':
     cloud = np.loadtxt('../data/test.xyz')
     mplot3d = MPlot3D(scale=0.002)
     mplot3d.draw_cloud(cloud)
+=======
+    import calculate as calc
+
+    arrow = np.float32([[0, 0, 0], [100, 0, 0]])
+
+    pose_arrow = calc.rpypose_to_pose((0, 0, 100), (0, np.deg2rad(90), 0))
+    trans_arrow = calc.matrix_invert(calc.pose_to_matrix(pose_arrow))
+    print 'arrow quat:', calc.matrix_to_quatpose(trans_arrow)
+    points = calc.transform_points(pose_arrow, arrow)
+    arrow2 = (points[0], points[1]-points[0])
+    print pose_arrow, points
+
+    position = ((0, 20, 0), (np.deg2rad(-45), np.deg2rad(45), np.deg2rad(0)))
+    pose = calc.rpypose_to_pose(*position)
+    print 'quat:', calc.rpypose_to_quatpose(*position)
+    trans = calc.matrix_compose([calc.pose_to_matrix(pose), calc.pose_to_matrix(pose_arrow)])
+    print 'final pose:', calc.matrix_to_quatpose(trans)
+    points = calc.transform_points(calc.matrix_to_pose(trans), arrow)
+    arrow3 = (points[0], points[1]-points[0])
+    print pose, points
+
+    mplot3d = MPlot3D()
+    mplot3d.draw_working_area(100, 100)
+    mplot3d.draw_frame((frame, point), label='frame')
+    mplot3d.draw_arrow(arrow)
+    #mplot3d.draw_arrow(arrow2)
+    mplot3d.draw_frame(calc.matrix_to_pose(trans_arrow))
+    mplot3d.draw_arrow(arrow3)
+    #mplot3d.draw_frame(calc.matrix_to_pose(calc.matrix_invert(trans)))
+>>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
     mplot3d.show()
