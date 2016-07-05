@@ -26,16 +26,6 @@ def filter_polyline(points, dist=0.1, angl=0.01):
     return points
 
 
-<<<<<<< HEAD
-def get_range_values(v_min, v_max, v_dist):
-    n_vals = np.round(((v_max - v_min) + v_dist) / v_dist)
-    i_min = ((v_max + v_min) - (n_vals * v_dist)) / 2
-    i_max = ((v_max + v_min) + (n_vals * v_dist)) / 2
-    return np.arange(i_min, i_max + v_dist, v_dist)
-
-
-=======
->>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
 class Mesh:
     def __init__(self, filename):
         # Bounding box
@@ -55,13 +45,9 @@ class Mesh:
             self.bounding_box()
         if self.valid:
             self.translate(np.float32([0, 0, 0]))  # translates the piece to the origin
-<<<<<<< HEAD
-            self.resort_triangles()
-=======
             #TODO: Resort only for calculation
             #self.resort_triangles()
         print '> Load file:', filename
->>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
 
     def load_binary_mesh(self, filename):
         try:
@@ -156,8 +142,6 @@ class Mesh:
         for k, tri in enumerate(self.triangles):
             self.triangles[k] = tri[tri[:, 2].argsort()]
 
-<<<<<<< HEAD
-=======
     def get_range_values(self, v_min, v_max, v_dist):
         n_vals = np.round(((v_max - v_min) + v_dist) / v_dist)
         i_min = ((v_max + v_min) - (n_vals * v_dist)) / 2
@@ -170,7 +154,6 @@ class Mesh:
         i_max = ((self.z_max + self.z_min) + (n_vals * zdist)) / 2
         return np.arange(i_min, i_max + zdist, zdist) + 0.00001
 
->>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
     def get_z_intersect(self, triangle, z_level):
         """Gets the intersection line of the triangle with the plane in Z."""
         # Return the intersection of the tringle with the plane.
@@ -255,11 +238,7 @@ class Mesh:
         fill_lines = []
         x_min = np.min([np.min(poly[:, 0]) for poly in slice])
         x_max = np.max([np.max(poly[:, 0]) for poly in slice])
-<<<<<<< HEAD
-        for x in get_range_values(x_min, x_max, dist):
-=======
         for x in self.get_range_values(x_min, x_max, dist):
->>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
             points = []
             for poly in slice:
                 for k in range(len(poly)):
@@ -303,15 +282,6 @@ class Mesh:
                 if len(tool_path):
                     last_point = tool_path[-1][0]
                     if np.all(last_point == pnt1):
-<<<<<<< HEAD
-                        tool_path[-1] = [pnt2, orientation, True]
-                    else:
-                        tool_path.append([pnt1, orientation, False])
-                        tool_path.append([pnt2, orientation, True])
-                else:
-                    tool_path.append([pnt1, orientation, False])
-                    tool_path.append([pnt2, orientation, True])
-=======
                         tool_path[-1] = [pnt2, orientation, False]
                     else:
                         tool_path.append([pnt1, orientation, True])
@@ -319,14 +289,11 @@ class Mesh:
                 else:
                     tool_path.append([pnt1, orientation, True])
                     tool_path.append([pnt2, orientation, False])
->>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
             # Adds the offset path
             #last_point = tool_path[-1][0]
             #tool_path.append([last_point + np.float32([0, offset, 0]), orientation, False])
         return tool_path
 
-<<<<<<< HEAD
-=======
     def get_path_from_slice(self, slice, track_distance, pair=False):
         path = []
         for contour in slice:
@@ -337,42 +304,12 @@ class Mesh:
             path.extend(tool_path)
         return path
 
->>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
     def get_path_from_slices(self, slices):
         orientation = np.array((0.0, 0.0, 0.0, 1.0))
         tool_path = []
         for slice in slices:
             if slice is not None:
                 for contour in slice:
-<<<<<<< HEAD
-                    tool_path.append([contour[0], orientation, False])
-                    for point in contour[1:]:
-                        tool_path.append([point, orientation, True])
-        return tool_path
-
-    def get_mesh_slices_path(self, layer_height, track_distance):
-        slices = []
-        path = []
-        t0 = time.time()
-        levels = get_range_values(mesh.z_min, mesh.z_max, layer_height)
-        pair = False
-        for k, z_level in enumerate(levels):
-            slice = mesh.get_slice(z_level)
-            slices.append(slice)
-            t1 = time.time()
-            print '[%.2f%%] Time to slices %.3f s.' % ((100.0 * (k + 1)) / len(levels), t1 - t0)
-            if slice is not None:
-                for contour in slice:
-                    fill_lines = self.get_grated(slice, track_distance)
-                    # Reverse the order of the slicer fill lines
-                    if pair:
-                        fill_lines.reverse()
-                    pair = not pair
-                    tool_path = self.get_path_from_fill_lines(fill_lines)
-                    path.extend(tool_path)
-                t2 = time.time()
-                print '[%.2f%%] Time to path %.3f s.' % ((100.0 * (k + 1)) / len(slices), t2 - t1)
-=======
                     for point in contour[:-1]:
                         tool_path.append([point, orientation, True])
                     tool_path.append([contour[-1], orientation, False])
@@ -391,53 +328,10 @@ class Mesh:
             slices.append(slice)
             t1 = time.time()
             print '[%.2f%%] Time to path %.3f s.' % ((100.0 * (k + 1)) / len(levels), t1 - t0)
->>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
         return slices, path
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
-    import sys
-    from mlabplot import MPlot3D
-
-    if len(sys.argv) > 1:
-        filename = sys.argv[1]
-    else:
-        #filename = '../../data/models_stl/aimen.stl'
-        filename = '../../data/models_stl/piece0.stl'
-
-    # Triangle mesh is composed by a set of faces (triangles)
-    mesh = Mesh(filename)
-
-    t0 = time.time()
-    slice = mesh.get_slice(0.1)
-    lines = mesh.get_grated(slice, 1.5)
-    t1 = time.time()
-    print 'Time for slice:', t1 - t0
-    print slice
-    print lines
-
-    mplot3d = MPlot3D()
-    mplot3d.draw_slice(slice)
-    mplot3d.show()
-
-    t0 = time.time()
-    path = mesh.get_path_from_slices([slice])
-    path = mesh.get_path_from_fill_lines(lines)
-    t1 = time.time()
-    print 'Time for path:', t1 - t0
-    print 'Path:', path
-
-    mplot3d = MPlot3D()
-    mplot3d.draw_path(path)
-    mplot3d.show()
-
-    layer_height, track_distance = 0.50, 1.5
-    slices, path = mesh.get_mesh_slices_path(layer_height, track_distance)
-    # Get path from slices
-    path_contour = mesh.get_path_from_slices(slices)
-    print path_contour
-=======
     import argparse
     from mlabplot import MPlot3D
 
@@ -472,7 +366,6 @@ if __name__ == '__main__':
     slices, path = mesh.get_mesh_slices_path(0.5, 2.0)
     path_contour = mesh.get_path_from_slices(slices)
     #print path_contour
->>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
 
     # TODO: Refactor to calculate Contour and Filler tool path.
     # TODO: Add options to interface (checkboxes).
@@ -484,13 +377,8 @@ if __name__ == '__main__':
     #    _path.append([position, frame, process])
 
     mplot3d = MPlot3D()
-<<<<<<< HEAD
-    #mplot3d.draw_mesh(mesh)
-    #mplot3d.draw_slices(slices)
-=======
     mplot3d.draw_mesh(mesh)
     mplot3d.draw_slices(slices)
->>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
     #mplot3d.draw_path(path)
     mplot3d.draw_path(path_contour)
     #mplot3d.draw_path_tools(_path)

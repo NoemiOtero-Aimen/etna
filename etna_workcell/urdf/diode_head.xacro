@@ -10,11 +10,7 @@
   <link name="head0">
   <visual>
     <geometry>
-<<<<<<< HEAD
-      <mesh filename="package://etna_workcell/meshes/head_diode/head_diode.stl" />
-=======
       <mesh filename="package://etna_workcell/meshes/head_diode/head.stl" />
->>>>>>> d3ed556e67d821343be06efe0997e8100b6a1ab7
     </geometry>
     <material name="gray">
       <color rgba="0.6 0.5 0.4 0.7"/>
